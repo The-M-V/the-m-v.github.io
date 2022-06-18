@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Nmap | TheMV</title>
+<meta name="keywords" content="">
+<meta name="description" content="¿Qué es Nmap? Nmap es un software de código abierto que se utiliza para escanear una red y sus puertos con el objetivo de obtener información importante sobre la misma para controlar y gestionar su seguridad. Es una aplicación que se utiliza normalmente para realizar auditorías de seguridad y auditorias en redes.
+Algunas de las cosas que se pueden hacer con Nmap.  Identificar dispositivos dentro de una red
+  Identificar versiones y servicios">
+<meta name="author" content="">
+<link rel="canonical" href="https://the-m-v.github.io/herramientas/nmap/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://the-m-v.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://the-m-v.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://the-m-v.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://the-m-v.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://the-m-v.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Nmap" />
+<meta property="og:description" content="¿Qué es Nmap? Nmap es un software de código abierto que se utiliza para escanear una red y sus puertos con el objetivo de obtener información importante sobre la misma para controlar y gestionar su seguridad. Es una aplicación que se utiliza normalmente para realizar auditorías de seguridad y auditorias en redes.
+Algunas de las cosas que se pueden hacer con Nmap.  Identificar dispositivos dentro de una red
+  Identificar versiones y servicios" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://the-m-v.github.io/herramientas/nmap/" /><meta property="article:section" content="herramientas" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Nmap"/>
+<meta name="twitter:description" content="¿Qué es Nmap? Nmap es un software de código abierto que se utiliza para escanear una red y sus puertos con el objetivo de obtener información importante sobre la misma para controlar y gestionar su seguridad. Es una aplicación que se utiliza normalmente para realizar auditorías de seguridad y auditorias en redes.
+Algunas de las cosas que se pueden hacer con Nmap.  Identificar dispositivos dentro de una red
+  Identificar versiones y servicios"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Herramientas",
+      "item": "https://the-m-v.github.io/herramientas/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Nmap",
+      "item": "https://the-m-v.github.io/herramientas/nmap/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Nmap",
+  "name": "Nmap",
+  "description": "¿Qué es Nmap? Nmap es un software de código abierto que se utiliza para escanear una red y sus puertos con el objetivo de obtener información importante sobre la misma para controlar y gestionar su seguridad. Es una aplicación que se utiliza normalmente para realizar auditorías de seguridad y auditorias en redes.\nAlgunas de las cosas que se pueden hacer con Nmap.  Identificar dispositivos dentro de una red\n  Identificar versiones y servicios",
+  "keywords": [
+    
+  ],
+  "articleBody": "¿Qué es Nmap? Nmap es un software de código abierto que se utiliza para escanear una red y sus puertos con el objetivo de obtener información importante sobre la misma para controlar y gestionar su seguridad. Es una aplicación que se utiliza normalmente para realizar auditorías de seguridad y auditorias en redes.\nAlgunas de las cosas que se pueden hacer con Nmap.  Identificar dispositivos dentro de una red\n  Identificar versiones y servicios\n  Detectar sistemas operativos\n  Detectar vulnerabilidades\n Y muchas más cosas.\nVamos a ver algunos términos que son importantes a tener en cuenta, ya que normalmente los escaneos de nmap lanzan mucha información.\n¿Qué es una red? Cuando hablamos de una red, estamos hablando de una serie de dispositivos conectados entre sí por un medio, pueden ser Computadoras, Televisores, Teléfonos, Tablets, Etc. Si yo tuviera varios dispositivos entre sí conectados, que pudieran comunicarse podríamos decir que es una red, aunque sea una red local\n¿Qué tipos de redes existen? ¡Bien! Ahora que entendemos que es una red, vamos a hablar de los tipos de redes que existen\n Lan\n  Man\n  Wan\n ¿Qué es una red Lan? Una red LAN que sus siglas significan Local Area Network, o sea, Red de área Local donde justamente estamos hablando de un área relativamente pequeña, en donde los diferentes dispositivos están conectados entre sí, en donde pueden compartir recursos o datos\nEjemplo de red LAN, su casa, ustedes tienen un módem que les ha brindado su proveedor de internet, donde ustedes se conectan a través de Wifi o Cable o ambos, e inmediatamente todos los dispositivos que estén conectados a ese módem va a formar parte de su red, van a compartir medios de comunicación.\nPuede no tener internet, pero los dispositivos se van a ver entre sí, siempre y cuando tengan una interfaz de salida con el otro dispositivo, etc. Inclusive en seguridad informática hay métodos como el Man In The Middle que significa hombre en el medio, en donde nosotros podemos interceptar la información, escucharla, etc.\n¿Qué es una red Man? El término MAN proviene de “Metropolitan Area Network” o en español, red de área metropolitana. Este tipo de red es el paso intermedio entre una red LAN y una red WAN, ya que la extensión de este tipo de redes comprende el territorio de una gran ciudad. Las redes MAN son redes de alta velocidad capaces de dar cobertura a una geografía relativamente extensa, aunque nunca superando las dimensiones de una ciudad.\n¿Qué es una red Wan? Las siglas WAN, provienen de la palabra inglesa “Wide Area Network” que traduce “Red de Área Amplia” y, como su nombre lo indica, es el tipo de red informática que permite establecer comunicaciones entre áreas grandes entre unos 100 y unos 1000 Km, ofreciendo el servicio desde a particulares y redes locales (LAN), a un país entero e incluso, a continentes, siendo de vital importancia para las comunicaciones actuales.\nUn claro ejemplo de este tipo de red, es Internet\n¿Qué es una IP? Una IP (Internet Protoco) es una etiqueta numérica que sirve como identificador de un dispositivo en una red, esta dirección no se puede repetir.\n¿Qué es un Protocolo? En informática y telecomunicación, un protocolo de comunicaciones es un sistema de reglas que permiten que dos o más entidades de un sistema de comunicación se comuniquen entre ellas para transmitir información\n¿Qué es un Puerto? un puerto es una interfaz a través de la cual se pueden enviar y recibir los diferentes tipos de datos, por ejemplo datos de servicios como, FTP, SSH, Etc.\n¿Qué es un servicio? Es un conjunto de actividades que buscan responder a las necesidades de un cliente, un servicio puede ser un servicio web un servicio FTP, SSH, Etc.\n¿Qué son las vulnerabilidades? En informática, una vulnerabilidad es una debilidad existente en un sistema que puede ser utilizada por una persona malintencionada para comprometer su seguridad.\n¿Qué es y para qué sirve el TCP? TCP/IP son las siglas de Transmission Control Protocol/Internet Protocol (Protocolo de control de transmisión/Protocolo de Internet). TCP/IP es un conjunto de reglas estandarizadas que permiten a los equipos comunicarse en una red como Internet.\n¿Qué es el protocolo UDP y para qué sirve? El Protocolo de datagrama de usuario (UDP) es un protocolo ligero de transporte de datos que funciona sobre IP. UDP proporciona un mecanismo para detectar datos corruptos en paquetes, pero no intenta resolver otros problemas que surgen con paquetes, como cuando se pierden o llegan fuera de orden, un claro ejemplo de un protocolo UDP podria ser una videollamada\nTipos de escaneos/sondeos  -sT (Escaneo TCP connect()) Este escaneo se utiliza escribiendo nmap -sT.\n  -sS (Escaneo TCP SYN) Este escaneo se utiliza escribiendo nmap -sS y requiere privilegios de superusuario.\n  -sn / -sP (Escaneo por Ping) Este escaneo se utiliza escribiendo -sn - o -sP o sea nmap -sn / nmap -sP.\n  -sU (Escaneo por UDP) Este escaneo se utiliza escribiendo nmap -sU y requiere privilegios de superusuario.\n Comandos Nmap Bueno, ahora vamos a empezar con los comandos de Nmap.\nEscanear todo el rango de puertos por TCP  nmap -p- -sT [Direccion IP]\n Lo que hace el parametro -p- es escanear los 65535 puertos, si quieren escanear algunos puertos en especifico, lo indican asi, nmap -p[port], cada vez que agregen un puerto deben separalos por “,”\nEjemplo: nmap -p21,22,23\nSi observamos el escaneo que acabamos de hacer, nos muestra que hizo la resolución DNS, para desactivarlo hay que ponerle el parámetro -n.\nEscanear puertos por UDP  sudo nmap -sU [Direccion IP] –top-ports=10\n Como pueden ver, he usado el parámetro –top-ports=10, ese parámetro sirve para indicarle a nmap que solo queremos escanear los 10 puertos más famosos, la cantidad la podemos modificar a nuestro gusto, yo se lo puse así porque los escaneos de UDP suelen ser muy lentos.\nEscaneo por Ping  nmap -sn [Direccion IP/24]\n Fíjense que este escaneo nos muestra los hosts que están activos.\nDetectar Versiones, Servicios y Sistema operativo En esta sección les voy a mostrar los parámetros para listar las versiones y servicios de los puertos y detectar el sistema operativo de una dirección IP.\nPara poder detectar las versiones y servicios usaremos el parámetro -sV\nEl parámetro que se utiliza para detectar sistemas operativos es -O\nFormatos de salida en Nmap Existen formas con nmap para guardar los resultados de esos escaneos, ahí entra en juego las salidas.\n -oN “filespec” (Salida normal)\n Exporta toda la informacion tal cual se muestra en pantalla en el fichero que le digamos.\n -oX “filespec” (salida XML)\n Exporta toda la información en formato XML\n -oG “filespec” (Salida «grepeable»)\n Exporta toda la inforamción en formato grepeable.\nEvasión de IDS/Firewall Antes de comenzar les quiero aclarar que no hay ninguna forma para que yo les dé la solución exacta para evadir un Firewall, se podría decir que es todo a base de prueba y error.\nBueno, una vez dicho esto, comencemos escaneando la página de prueba que tiene nmap para que practiquemos\nEl parámetro –min-rate sirve para elegir la cantidad de paquetes que queremos emitir por segundo(el maximo de paquetes que podemos elegir son 5000), este comando es muy útil para aumentar la velocidad de los escaneos, usar este parámetro va a ser que el escaneo sea muy ruidoso(úselo en entornos controlados)\nComo podemos ver, hay muchos puertos con el estado filtered, es decir que hay un firewall que nos esta impidiendo saber si el puerto está abierto o cerrado.\nUn parámetro muy útil para intentar evadir los firewalls es el -f, este parámetro lo que va a hacer es mandar los paquetes fragmentados(es decir, dividirlos en partes más pequeñas) haciendo menos probable que los paquetes sean detectados por un firewall.\nOtro parámetro útil es el -sN este parámetro lo que va a hacer es un escaneo nulo es decir que no va a mandar ninguna flag en el paquete, cuando hacemos un escaneo con nmap, normalmente son por TCP o UDP, y todos esos paquetes llevan flags, pueden ser SYN, FIN, Etc. Bueno, lo que hace este parámetro es que no lleve ninguna flag y si un firewall está detectando por medio de las flags lo que va a hacer el escaneo nulo es no activar ninguna flag.\n¡Probemos estos parámetros!\nGenial, como podemos ver hemos podido evadir el firewall que nos estaba filtrando los puertos, igual no siempre usando estos parámetros los vamos a evadir, les dejaré otro tipo de escaneo que pueden probar, el cual usa el parámetro -sX, este es conocido como escaneo de navidad, ya que los paquetes que envía son con flags no comunes, y si el firewall está filtrando por paquetes SYN o ICMP, lo que va a hacer es asignar ciertos flags que el firewall no tenga preestablecidos y así evadirlo.\nComo vemos, este escaneo también nos a servidor para evadir el firewall, les dejaré una lista con más parámetros que pueden usar para evadir los firewalls.\n -D [señuelo1, señuelo2]: Ocultar un escaneo con señuelos\n  -S [Dirección IP]: Dirección de origen falsa\n  -e [iface]: Usar la interfaz especificada\n  -g | –source-port [portnum] : Usar el número de puerto dado\n Scripts de Nmap Bien, una vez ya tengamos los diferentes servicios en los puertos que hemos detectado, nmap nos provee con una gran cantidad de scripts que podemos utilizar, ya sea para buscar vulnerabilidades, hacer fuerza bruta, Reconocimiento, Etc.\nLos scripts se separan en distintos tipos de categorías.\n auth\n Estos scripts se ocupan de las credenciales de autenticación (o las omiten) en el sistema de destino. Los ejemplos incluyen x11-access, ftp-anony oracle-enum-users.\n broadcast\n Los scripts de esta categoría normalmente detectan hosts que no aparecen en la línea de comandos mediante la difusión en la red local.\n brute\n Estos scripts utilizan ataques de fuerza bruta para adivinar las credenciales de autenticación de un servidor remoto. Nmap contiene scripts para fuerza bruta en docenas de protocolos, incluidos http-brute, oracle-brute, snmp-brute, etc.\n default\n Estos scripts son el conjunto predeterminado y se ejecutan cuando se usan las opciones -scripts\n discovery\n Estos scripts intentan descubrir activamente más sobre la red consultando registros públicos, dispositivos habilitados para SNMP, servicios de directorio y similares.\n dos\n Los scripts de esta categoría pueden provocar una denegación de servicio. A veces, esto se hace para probar la vulnerabilidad a un método de denegación de servicio, pero más comúnmente es un efecto secundario no deseado por necesidad de probar una vulnerabilidad tradicional.\n exploit\n Estos scripts tienen como objetivo explotar activamente alguna vulnerabilidad. Los ejemplos incluyen jdwp-execy http-shellshock.\n external\n Los scripts de esta categoría pueden enviar datos a una base de datos de terceros u otro recurso de red. Un ejemplo de esto es whois-ip, que realiza una conexión a servidores whois para conocer la dirección del objetivo.\n fuzzer\n Esta categoría contiene scripts que están diseñados para enviar al software del servidor campos aleatorios o inesperados en cada paquete. Si bien esta técnica puede ser útil para encontrar errores y vulnerabilidades no descubiertos en el software, es un proceso lento y requiere mucho ancho de banda.\n intrusive\n Estos son scripts que no se pueden clasificar en la safe categoría porque los riesgos son demasiado altos de que bloqueen el sistema de destino, consuman recursos significativos en el host de destino (como el ancho de banda o el tiempo de CPU) o que los usuarios del destino los perciban como maliciosos.\n malware\n Estos scripts prueban si la plataforma de destino está infectada por malware o puertas traseras. Los ejemplos incluyen smtp-strangeport, que vigila los servidores SMTP que se ejecutan en números de puerto inusuales, y auth-spoof, que detecta demonios de suplantación de identidad que brindan una respuesta falsa incluso antes de recibir una consulta.\n safe\n Las secuencias de comandos que no fueron diseñadas para colapsar los servicios, usar grandes cantidades de ancho de banda de red u otros recursos, o explotar agujeros de seguridad se clasifican como safe. Es menos probable que ofendan a los administradores remotos, aunque (al igual que con todas las demás funciones de Nmap) no podemos garantizar que nunca causen reacciones adversas.\n version\n Los scripts de esta categoría especial son una extensión de la función de detección de versiones y no se pueden seleccionar de forma explícita. Se seleccionan para ejecutarse solo si -sV se solicitó la detección de versión.\n vuln\n Estos scripts verifican vulnerabilidades específicas conocidas y, en general, solo informan los resultados si se encuentran. Los ejemplos incluyen realvnc-auth-bypassy afp-path-vuln.\nNormalmente los scripts se encuentran en la ruta /usr/bin/nmap/scripts/ o /usr/share/nmap/scripts/\nEn caso de que no los encuentren pueden hacer un locate .nse y les mostrara todos los archivos que terminen en esa extensión.\nSi quieren saber de qué categoría es un script, nmap tiene contemplado un archivo llamado script.db, para saber donde se encuentran pueden poner en su terminal locate script.db.\nPara usarlos se utiliza el siguiente parámetro\n –script\n la sintaxis sería algo así\n –script [filename] [category] [directory] [expression]\n Si queremos usar un script en específico, solo ponemos el nombre del script, por ejemplo\n–script http-enum.nse\nRendimiento y Performance Una de las cosas más importantes al usar la herramienta Nmap es el tiempo y el rendimiento, para esto Nmap nos ofrece algunos parámetros muy útiles, como el -T el parámetro -T es una plantilla de tiempo.\nConfiguracion que usa cada plantilla.\n -T0 – Solo se escanea 1 puerto a la vez y se espera 5min hasta el siguiente\n  -T1 y T2 – Muy parecidos pero solo esperan 15 y 0,4seg respectivamente enttre cada prueba\n  -T3 – Funcionamiento por defecto, incluye en paralelo\n  -T4 – –max-rtt-timeout 1250ms –min-rtt-timeout 100ms –initial-rtt-timeout 500ms –max-retries 6 –max-scan-delay 10ms\n  -T5 – –max-rtt-timeout 300ms –min-rtt-timeout 50ms –initial-rtt-timeout 250ms –max-retries 2 –host-timeout 15m –max-scan-delay 5ms\n Gracias por leer este post, espero que te haya gustado y luego le voy a ir sumando más contenido, ¡saludos! ",
+  "wordCount" : "2285",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://the-m-v.github.io/herramientas/nmap/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "TheMV",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://the-m-v.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://the-m-v.github.io" accesskey="h" title="TheMV (Alt + H)">TheMV</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://the-m-v.github.io/posts/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://the-m-v.github.io/herramientas/" title="Herramientas">
+                    <span>Herramientas</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://the-m-v.github.io/about/" title="Sobre mi">
+                    <span>Sobre mi</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Nmap
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="qué-es-nmap">¿Qué es Nmap?<a hidden class="anchor" aria-hidden="true" href="#qué-es-nmap">#</a></h2>
+<p>Nmap es un software de código abierto que se utiliza para escanear una red y sus puertos con el objetivo de obtener información importante sobre la misma para controlar y gestionar su seguridad. Es una aplicación que se utiliza normalmente para realizar auditorías de seguridad y auditorias en redes.</p>
+<p><img loading="lazy" src="https://i.postimg.cc/mDYzjsJg/unknown.png" alt="unknown.png"  />
+</p>
+<h2 id="algunas-de-las-cosas-que-se-pueden-hacer-con-nmap">Algunas de las cosas que se pueden hacer con Nmap.<a hidden class="anchor" aria-hidden="true" href="#algunas-de-las-cosas-que-se-pueden-hacer-con-nmap">#</a></h2>
+<blockquote>
+<p>Identificar dispositivos dentro de una red</p>
+</blockquote>
+<blockquote>
+<p>Identificar versiones y servicios</p>
+</blockquote>
+<blockquote>
+<p>Detectar sistemas operativos</p>
+</blockquote>
+<blockquote>
+<p>Detectar vulnerabilidades</p>
+</blockquote>
+<p>Y muchas más cosas.</p>
+<p>Vamos a ver algunos términos que son importantes a tener en cuenta, ya que normalmente los escaneos de nmap lanzan mucha información.</p>
+<h2 id="qué-es-una-red">¿Qué es una red?<a hidden class="anchor" aria-hidden="true" href="#qué-es-una-red">#</a></h2>
+<p>Cuando hablamos de una red, estamos hablando de una serie de dispositivos conectados entre sí por un medio, pueden ser Computadoras, Televisores, Teléfonos, Tablets, Etc. Si yo tuviera varios dispositivos entre sí conectados, que pudieran comunicarse podríamos decir que es una red, aunque sea una red local</p>
+<h2 id="qué-tipos-de-redes-existen">¿Qué tipos de redes existen?<a hidden class="anchor" aria-hidden="true" href="#qué-tipos-de-redes-existen">#</a></h2>
+<p>¡Bien! Ahora que entendemos que es una red, vamos a hablar de los tipos de redes que existen</p>
+<blockquote>
+<p>Lan</p>
+</blockquote>
+<blockquote>
+<p>Man</p>
+</blockquote>
+<blockquote>
+<p>Wan</p>
+</blockquote>
+<h2 id="qué-es-una-red-lan">¿Qué es una red Lan?<a hidden class="anchor" aria-hidden="true" href="#qué-es-una-red-lan">#</a></h2>
+<p>Una red LAN que sus siglas significan Local Area Network, o sea, Red de área Local
+donde justamente estamos hablando de un área relativamente pequeña, en donde los diferentes dispositivos están conectados entre sí, en donde pueden compartir recursos o datos</p>
+<p>Ejemplo de red LAN, su casa, ustedes tienen un módem que les ha brindado su proveedor de internet, donde ustedes se conectan a través de Wifi o Cable o ambos, e inmediatamente todos los dispositivos que estén conectados a ese módem va a formar parte de su red, van a compartir medios de comunicación.</p>
+<p>Puede no tener internet, pero los dispositivos se van a ver entre sí, siempre y cuando tengan una interfaz de salida con el otro dispositivo, etc. Inclusive en seguridad informática hay métodos como el Man In The Middle que significa hombre en el medio, en donde nosotros podemos interceptar la información, escucharla, etc.</p>
+<h2 id="qué-es-una-red-man">¿Qué es una red Man?<a hidden class="anchor" aria-hidden="true" href="#qué-es-una-red-man">#</a></h2>
+<p>El término MAN proviene de “Metropolitan Area Network” o en español, red de área metropolitana. Este tipo de red es el paso intermedio entre una red LAN y una red WAN, ya que la extensión de este tipo de redes comprende el territorio de una gran ciudad. Las redes MAN son redes de alta velocidad capaces de dar cobertura a una geografía relativamente extensa, aunque nunca superando las dimensiones de una ciudad.</p>
+<h2 id="qué-es-una-red-wan">¿Qué es una red Wan?<a hidden class="anchor" aria-hidden="true" href="#qué-es-una-red-wan">#</a></h2>
+<p>Las siglas WAN, provienen de la palabra inglesa “Wide Area Network” que traduce “Red de Área Amplia” y, como su nombre lo indica, es el tipo de red informática que permite establecer comunicaciones entre áreas grandes entre unos 100 y unos 1000 Km, ofreciendo el servicio desde a particulares y redes locales (LAN), a un país entero e incluso, a continentes, siendo de vital importancia para las comunicaciones actuales.</p>
+<p>Un claro ejemplo de este tipo de red, es Internet</p>
+<h2 id="qué-es-una-ip">¿Qué es una IP?<a hidden class="anchor" aria-hidden="true" href="#qué-es-una-ip">#</a></h2>
+<p>Una IP (Internet Protoco) es una etiqueta numérica que sirve como identificador de un dispositivo en una red, esta dirección no se puede repetir.</p>
+<h2 id="qué-es-un-protocolo">¿Qué es un Protocolo?<a hidden class="anchor" aria-hidden="true" href="#qué-es-un-protocolo">#</a></h2>
+<p>En informática y telecomunicación, un protocolo de comunicaciones es un sistema de reglas que permiten que dos o más entidades de un sistema de comunicación se comuniquen entre ellas para transmitir información</p>
+<h2 id="qué-es-un-puerto">¿Qué es un Puerto?<a hidden class="anchor" aria-hidden="true" href="#qué-es-un-puerto">#</a></h2>
+<p>un puerto es una interfaz a través de la cual se pueden enviar y recibir los diferentes tipos de datos, por ejemplo datos de servicios como, FTP, SSH, Etc.</p>
+<h2 id="qué-es-un-servicio">¿Qué es un servicio?<a hidden class="anchor" aria-hidden="true" href="#qué-es-un-servicio">#</a></h2>
+<p>Es un conjunto de actividades que buscan responder a las necesidades de un cliente, un servicio puede ser un servicio web un servicio FTP, SSH, Etc.</p>
+<h2 id="qué-son-las-vulnerabilidades">¿Qué son las vulnerabilidades?<a hidden class="anchor" aria-hidden="true" href="#qué-son-las-vulnerabilidades">#</a></h2>
+<p>En informática, una vulnerabilidad es una debilidad existente en un sistema que puede ser utilizada por una persona malintencionada para comprometer su seguridad.</p>
+<h2 id="qué-es-y-para-qué-sirve-el-tcp">¿Qué es y para qué sirve el TCP?<a hidden class="anchor" aria-hidden="true" href="#qué-es-y-para-qué-sirve-el-tcp">#</a></h2>
+<p>TCP/IP son las siglas de Transmission Control Protocol/Internet Protocol (Protocolo de control de transmisión/Protocolo de Internet). TCP/IP es un conjunto de reglas estandarizadas que permiten a los equipos comunicarse en una red como Internet.</p>
+<h2 id="qué-es-el-protocolo-udp-y-para-qué-sirve">¿Qué es el protocolo UDP y para qué sirve?<a hidden class="anchor" aria-hidden="true" href="#qué-es-el-protocolo-udp-y-para-qué-sirve">#</a></h2>
+<p>El Protocolo de datagrama de usuario (UDP) es un protocolo ligero de transporte de datos que funciona sobre IP. UDP proporciona un mecanismo para detectar datos corruptos en paquetes, pero no intenta resolver otros problemas que surgen con paquetes, como cuando se pierden o llegan fuera de orden, un claro ejemplo de un protocolo UDP podria ser una videollamada</p>
+<h2 id="tipos-de-escaneossondeos">Tipos de escaneos/sondeos<a hidden class="anchor" aria-hidden="true" href="#tipos-de-escaneossondeos">#</a></h2>
+<blockquote>
+<p>-sT (Escaneo TCP connect())
+<img loading="lazy" src="https://i.postimg.cc/TP96f2yb/unknown.png" alt="unknown.png"  />
+
+Este escaneo se utiliza escribiendo <strong>nmap -sT</strong>.</p>
+</blockquote>
+<blockquote>
+<p>-sS (Escaneo TCP SYN)
+<img loading="lazy" src="https://i.postimg.cc/Jh6Rj41L/unknown.png" alt="unknown.png"  />
+
+Este escaneo se utiliza escribiendo <strong>nmap -sS</strong> y requiere privilegios de superusuario.</p>
+</blockquote>
+<blockquote>
+<p>-sn / -sP (Escaneo por Ping)
+<img loading="lazy" src="https://i.postimg.cc/brqL88tZ/unknown.png" alt="unknown.png"  />
+
+Este escaneo se utiliza escribiendo -sn - o -sP o sea <strong>nmap -sn / nmap -sP</strong>.</p>
+</blockquote>
+<blockquote>
+<p>-sU (Escaneo por UDP)
+<img loading="lazy" src="https://i.postimg.cc/J7K5JfXQ/unknown.png" alt="unknown.png"  />
+
+Este escaneo se utiliza escribiendo <strong>nmap -sU</strong> y requiere privilegios de superusuario.</p>
+</blockquote>
+<h2 id="comandos-nmap">Comandos Nmap<a hidden class="anchor" aria-hidden="true" href="#comandos-nmap">#</a></h2>
+<p>Bueno, ahora vamos a empezar con los comandos de Nmap.</p>
+<h2 id="escanear-todo-el-rango-de-puertos-por-tcp">Escanear todo el rango de puertos por TCP<a hidden class="anchor" aria-hidden="true" href="#escanear-todo-el-rango-de-puertos-por-tcp">#</a></h2>
+<blockquote>
+<p>nmap -p- -sT  [Direccion IP]</p>
+</blockquote>
+<p><img loading="lazy" src="https://i.postimg.cc/XJjQ64Fp/si.png" alt="si.png"  />
+</p>
+<p>Lo que hace el parametro <strong>-p-</strong> es escanear los 65535 puertos, si quieren escanear algunos puertos en especifico, lo indican asi, <strong>nmap -p[port]</strong>, cada vez que agregen un puerto deben separalos por &ldquo;,&rdquo;</p>
+<p>Ejemplo: <strong>nmap -p21,22,23</strong></p>
+<p>Si observamos el escaneo que acabamos de hacer, nos muestra que hizo la resolución DNS, para desactivarlo hay que ponerle el parámetro <strong>-n</strong>.</p>
+<h1 id="escanear-puertos-por-udp">Escanear puertos por UDP<a hidden class="anchor" aria-hidden="true" href="#escanear-puertos-por-udp">#</a></h1>
+<blockquote>
+<p>sudo nmap -sU [Direccion IP] &ndash;top-ports=10</p>
+</blockquote>
+<p><img loading="lazy" src="https://i.postimg.cc/sXWSLLHv/si.png" alt="si.png"  />
+</p>
+<p>Como pueden ver, he usado el parámetro <strong>&ndash;top-ports=10</strong>, ese parámetro sirve para indicarle a nmap que solo queremos escanear los 10 puertos más famosos, la cantidad la podemos modificar a nuestro gusto, yo se lo puse así porque los escaneos de UDP suelen ser muy lentos.</p>
+<h2 id="escaneo-por-ping">Escaneo por Ping<a hidden class="anchor" aria-hidden="true" href="#escaneo-por-ping">#</a></h2>
+<blockquote>
+<p>nmap -sn [Direccion IP/24]</p>
+</blockquote>
+<p><img loading="lazy" src="https://i.postimg.cc/R0KZxz95/si.png" alt="si.png"  />
+</p>
+<p>Fíjense que este escaneo nos muestra los hosts que están activos.</p>
+<h2 id="detectar-versiones-servicios-y-sistema-operativo">Detectar Versiones, Servicios y Sistema operativo<a hidden class="anchor" aria-hidden="true" href="#detectar-versiones-servicios-y-sistema-operativo">#</a></h2>
+<p>En esta sección les voy a mostrar los parámetros para listar las versiones y servicios de los puertos y detectar el sistema operativo de una dirección IP.</p>
+<p>Para poder detectar las versiones y servicios usaremos el parámetro -sV</p>
+<p><img loading="lazy" src="https://i.postimg.cc/Kjr06jpk/si.png" alt="si.png"  />
+</p>
+<p>El parámetro que se utiliza para detectar sistemas operativos es -O</p>
+<p><img loading="lazy" src="https://i.postimg.cc/C1Ctgczx/si.png" alt="si.png"  />
+</p>
+<h1 id="formatos-de-salida-en-nmap">Formatos de salida en Nmap<a hidden class="anchor" aria-hidden="true" href="#formatos-de-salida-en-nmap">#</a></h1>
+<p>Existen formas con nmap para guardar los resultados de esos escaneos, ahí entra en juego las salidas.</p>
+<blockquote>
+<p>-oN &ldquo;filespec&rdquo; (Salida normal)</p>
+</blockquote>
+<p>Exporta toda la informacion tal cual se muestra en pantalla en el fichero que le digamos.</p>
+<blockquote>
+<p>-oX &ldquo;filespec&rdquo; (salida XML)</p>
+</blockquote>
+<p>Exporta toda la información en formato XML</p>
+<blockquote>
+<p>-oG &ldquo;filespec&rdquo; (Salida «grepeable»)</p>
+</blockquote>
+<p>Exporta toda la inforamción en formato grepeable.</p>
+<h1 id="evasión-de-idsfirewall">Evasión de IDS/Firewall<a hidden class="anchor" aria-hidden="true" href="#evasión-de-idsfirewall">#</a></h1>
+<p>Antes de comenzar les quiero aclarar que no hay ninguna forma para que yo les dé la solución exacta para evadir un Firewall, se podría decir que es todo a base de prueba y error.</p>
+<p>Bueno, una vez dicho esto, comencemos escaneando la página de prueba que tiene nmap para que practiquemos</p>
+<p><img loading="lazy" src="https://i.postimg.cc/Tw8m825k/filtrados.png" alt="filtrados.png"  />
+</p>
+<p>El parámetro &ndash;min-rate sirve para elegir la cantidad de paquetes que queremos emitir por segundo(el maximo de paquetes que podemos elegir son 5000), este comando es muy útil para aumentar la velocidad de los escaneos, usar este parámetro va a ser que el escaneo sea muy ruidoso(úselo en entornos controlados)</p>
+<p>Como podemos ver, hay muchos puertos con el estado <strong>filtered</strong>, es decir que hay un firewall que nos esta impidiendo saber si el puerto está abierto o cerrado.</p>
+<p>Un parámetro muy útil para intentar evadir los firewalls es el <strong>-f</strong>, este parámetro lo que va a hacer es mandar los paquetes fragmentados(es decir, dividirlos en partes más pequeñas) haciendo menos probable que los paquetes sean detectados por un firewall.</p>
+<p>Otro parámetro útil es el <strong>-sN</strong> este parámetro lo que va a hacer es un escaneo nulo es decir que no va a mandar ninguna flag en el paquete, cuando hacemos un escaneo con nmap, normalmente son por TCP o UDP, y todos esos paquetes llevan flags, pueden ser SYN, FIN, Etc. Bueno, lo que hace este parámetro es que no lleve ninguna flag y si un firewall está detectando por medio de las flags lo que va a hacer el escaneo nulo es no activar ninguna flag.</p>
+<p>¡Probemos estos parámetros!</p>
+<p><img loading="lazy" src="https://i.postimg.cc/VsF8b7gv/yaxD.png" alt="yaxD.png"  />
+</p>
+<p>Genial, como podemos ver hemos podido evadir el firewall que nos estaba filtrando los puertos, igual no siempre usando estos parámetros los vamos a evadir, les dejaré otro tipo de escaneo que pueden probar, el cual usa el parámetro <strong>-sX</strong>, este es conocido como escaneo de navidad, ya que los paquetes que envía son con flags no comunes, y si el firewall está filtrando por paquetes SYN o ICMP, lo que va a hacer es asignar ciertos flags que el firewall no tenga preestablecidos y así evadirlo.</p>
+<p><img loading="lazy" src="https://i.postimg.cc/5213vrY6/unknown.png" alt="unknown.png"  />
+</p>
+<p>Como vemos, este escaneo también nos a servidor para evadir el firewall, les dejaré una lista con más parámetros que pueden usar para evadir los firewalls.</p>
+<blockquote>
+<p>-D [señuelo1, señuelo2]: Ocultar un escaneo con señuelos</p>
+</blockquote>
+<blockquote>
+<p>-S [Dirección IP]: Dirección de origen falsa</p>
+</blockquote>
+<blockquote>
+<p>-e [iface]: Usar la interfaz especificada</p>
+</blockquote>
+<blockquote>
+<p>-g | &ndash;source-port [portnum] : Usar el número de puerto dado</p>
+</blockquote>
+<h2 id="scripts-de-nmap">Scripts de Nmap<a hidden class="anchor" aria-hidden="true" href="#scripts-de-nmap">#</a></h2>
+<p>Bien, una vez ya tengamos los diferentes servicios en los puertos que hemos detectado, nmap nos provee con una gran cantidad de scripts que podemos utilizar, ya sea para buscar vulnerabilidades, hacer fuerza bruta, Reconocimiento, Etc.</p>
+<p>Los scripts se separan en distintos tipos de categorías.</p>
+<blockquote>
+<p>auth</p>
+</blockquote>
+<p>Estos scripts se ocupan de las credenciales de autenticación (o las omiten) en el sistema de destino. Los ejemplos incluyen x11-access, ftp-anony oracle-enum-users.</p>
+<blockquote>
+<p>broadcast</p>
+</blockquote>
+<p>Los scripts de esta categoría normalmente detectan hosts que no aparecen en la línea de comandos mediante la difusión en la red local.</p>
+<blockquote>
+<p>brute</p>
+</blockquote>
+<p>Estos scripts utilizan ataques de fuerza bruta para adivinar las credenciales de autenticación de un servidor remoto. Nmap contiene scripts para fuerza bruta en docenas de protocolos, incluidos http-brute, oracle-brute, snmp-brute, etc.</p>
+<blockquote>
+<p>default</p>
+</blockquote>
+<p>Estos scripts son el conjunto predeterminado y se ejecutan cuando se usan las opciones -scripts</p>
+<blockquote>
+<p>discovery</p>
+</blockquote>
+<p>Estos scripts intentan descubrir activamente más sobre la red consultando registros públicos, dispositivos habilitados para SNMP, servicios de directorio y similares.</p>
+<blockquote>
+<p>dos</p>
+</blockquote>
+<p>Los scripts de esta categoría pueden provocar una denegación de servicio. A veces, esto se hace para probar la vulnerabilidad a un método de denegación de servicio, pero más comúnmente es un efecto secundario no deseado por necesidad de probar una vulnerabilidad tradicional.</p>
+<blockquote>
+<p>exploit</p>
+</blockquote>
+<p>Estos scripts tienen como objetivo explotar activamente alguna vulnerabilidad. Los ejemplos incluyen jdwp-execy http-shellshock.</p>
+<blockquote>
+<p>external</p>
+</blockquote>
+<p>Los scripts de esta categoría pueden enviar datos a una base de datos de terceros u otro recurso de red. Un ejemplo de esto es whois-ip, que realiza una conexión a servidores whois para conocer la dirección del objetivo.</p>
+<blockquote>
+<p>fuzzer</p>
+</blockquote>
+<p>Esta categoría contiene scripts que están diseñados para enviar al software del servidor campos aleatorios o inesperados en cada paquete. Si bien esta técnica puede ser útil para encontrar errores y vulnerabilidades no descubiertos en el software, es un proceso lento y requiere mucho ancho de banda.</p>
+<blockquote>
+<p>intrusive</p>
+</blockquote>
+<p>Estos son scripts que no se pueden clasificar en la safe categoría porque los riesgos son demasiado altos de que bloqueen el sistema de destino, consuman recursos significativos en el host de destino (como el ancho de banda o el tiempo de CPU) o que los usuarios del destino los perciban como maliciosos.</p>
+<blockquote>
+<p>malware</p>
+</blockquote>
+<p>Estos scripts prueban si la plataforma de destino está infectada por malware o puertas traseras. Los ejemplos incluyen smtp-strangeport, que vigila los servidores SMTP que se ejecutan en números de puerto inusuales, y auth-spoof, que detecta demonios de suplantación de identidad que brindan una respuesta falsa incluso antes de recibir una consulta.</p>
+<blockquote>
+<p>safe</p>
+</blockquote>
+<p>Las secuencias de comandos que no fueron diseñadas para colapsar los servicios, usar grandes cantidades de ancho de banda de red u otros recursos, o explotar agujeros de seguridad se clasifican como safe. Es menos probable que ofendan a los administradores remotos, aunque (al igual que con todas las demás funciones de Nmap) no podemos garantizar que nunca causen reacciones adversas.</p>
+<blockquote>
+<p>version</p>
+</blockquote>
+<p>Los scripts de esta categoría especial son una extensión de la función de detección de versiones y no se pueden seleccionar de forma explícita. Se seleccionan para ejecutarse solo si -sV se solicitó la detección de versión.</p>
+<blockquote>
+<p>vuln</p>
+</blockquote>
+<p>Estos scripts verifican vulnerabilidades específicas conocidas y, en general, solo informan los resultados si se encuentran. Los ejemplos incluyen realvnc-auth-bypassy afp-path-vuln.</p>
+<p>Normalmente los scripts se encuentran en la ruta <strong>/usr/bin/nmap/scripts/</strong> o <strong>/usr/share/nmap/scripts/</strong></p>
+<p>En caso de que no los encuentren pueden hacer un <strong>locate .nse</strong> y les mostrara todos los archivos que terminen en esa extensión.</p>
+<p>Si quieren saber de qué categoría es un script, nmap tiene contemplado un archivo llamado <strong>script.db</strong>, para saber donde se encuentran pueden poner en su terminal <strong>locate script.db</strong>.</p>
+<p><img loading="lazy" src="https://i.postimg.cc/FFVfKbkV/dbscrip.png" alt="dbscrip.png"  />
+</p>
+<p><img loading="lazy" src="https://i.postimg.cc/4NFxKWfV/db.png" alt="db.png"  />
+</p>
+<p>Para usarlos se utiliza el siguiente parámetro</p>
+<blockquote>
+<p><strong>&ndash;script</strong></p>
+</blockquote>
+<p>la sintaxis sería algo así</p>
+<blockquote>
+<p>&ndash;script [filename]  [category]  [directory]  [expression]</p>
+</blockquote>
+<p>Si queremos usar un script en específico, solo ponemos el nombre del script, por ejemplo</p>
+<p><strong>&ndash;script http-enum.nse</strong></p>
+<h2 id="rendimiento-y-performance">Rendimiento y Performance<a hidden class="anchor" aria-hidden="true" href="#rendimiento-y-performance">#</a></h2>
+<p>Una de las cosas más importantes al usar la herramienta Nmap es el tiempo y el rendimiento, para esto Nmap nos ofrece algunos parámetros muy útiles, como el <strong>-T</strong> el parámetro <strong>-T</strong> es una plantilla de tiempo.</p>
+<p><img loading="lazy" src="https://i.postimg.cc/R09g5QkJ/unknown.png" alt="unknown.png"  />
+</p>
+<p>Configuracion que usa cada plantilla.</p>
+<blockquote>
+<p>-T0 &ndash;&gt; Solo se escanea 1 puerto a la vez y se espera 5min hasta el siguiente</p>
+</blockquote>
+<blockquote>
+<p>-T1 y T2 &ndash;&gt; Muy parecidos pero solo esperan 15 y 0,4seg respectivamente enttre cada prueba</p>
+</blockquote>
+<blockquote>
+<p>-T3 &ndash;&gt; Funcionamiento por defecto, incluye en paralelo</p>
+</blockquote>
+<blockquote>
+<p>-T4 &ndash;&gt; &ndash;max-rtt-timeout 1250ms &ndash;min-rtt-timeout 100ms &ndash;initial-rtt-timeout 500ms &ndash;max-retries 6 &ndash;max-scan-delay 10ms</p>
+</blockquote>
+<blockquote>
+<p>-T5 &ndash;&gt; &ndash;max-rtt-timeout 300ms &ndash;min-rtt-timeout 50ms &ndash;initial-rtt-timeout 250ms &ndash;max-retries 2 &ndash;host-timeout 15m &ndash;max-scan-delay 5ms</p>
+</blockquote>
+<h1 id="gracias-por-leer-este-post-espero-que-te-haya-gustado-y-luego-le-voy-a-ir-sumando-más-contenido-saludos">Gracias por leer este post, espero que te haya gustado y luego le voy a ir sumando más contenido, ¡saludos!<a hidden class="anchor" aria-hidden="true" href="#gracias-por-leer-este-post-espero-que-te-haya-gustado-y-luego-le-voy-a-ir-sumando-más-contenido-saludos">#</a></h1>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://the-m-v.github.io">TheMV</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

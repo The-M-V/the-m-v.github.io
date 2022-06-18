@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>TheMV</title>
+    <link>https://the-m-v.github.io/</link>
+    <description>Recent content on TheMV</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://the-m-v.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://the-m-v.github.io/about/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://the-m-v.github.io/about/about/</guid>
+      <description>Hola, bienvenido a mi página web, un gusto que estés aquí. Mi nombre es TheMV, me gusta el Hacking y la programación hace bastante tiempo, pero empecé a aprender hace poco. Por aquí voy a estar subiendo todo lo que voy aprendiendo, resoluciones de máquinas y manuales sobre herramientas</description>
+    </item>
+    
+    <item>
+      <title>Jerry Hack The Box</title>
+      <link>https://the-m-v.github.io/posts/jerry-htb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://the-m-v.github.io/posts/jerry-htb/</guid>
+      <description>Jerry es una máquina de dificultad fácil, su sistema operativo es Windows y utiliza credenciales por defecto para poder acceder al Apache Tomcat Manager.
+Fase de reconocimiento Lo primero que vamos a hacer será escanear los 65535 mediante el protocolo TCP, para esto vamos a utilizar la herramienta nmap con los siguientes comandos.
+ sudo nmap -p- &amp;ndash;open -sS &amp;ndash;min-rate 5000 -n -vvv -Pn 10.10.10.95 -oN puertos
+ Bueno, les dejo un resumen rápido de lo que hace cada comando</description>
+    </item>
+    
+    <item>
+      <title>Lame Hack The Box</title>
+      <link>https://the-m-v.github.io/posts/lame-htb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://the-m-v.github.io/posts/lame-htb/</guid>
+      <description>La máquina Lame es la primera que lanzo Hack The Box, es de dificultad fácil y su sistema operativo es Linux.
+Dicho esto, comencemos.
+Fase de reconocimiento Lo primero que vamos a hacer es escanear todo el rango de puertos usando la herramienta nmap, con el siguiente comando.
+ sudo nmap -p- &amp;ndash;open -sS &amp;ndash;min-rate 5000 -n -v -Pn -oN puertos 10.10.10.3
+ Como podemos observar, el escaneo ya ha terminado, vamos a lanzar otro escaneo para detectar las versiones y servicios que corren para esos puertos</description>
+    </item>
+    
+    <item>
+      <title>Nmap</title>
+      <link>https://the-m-v.github.io/herramientas/nmap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://the-m-v.github.io/herramientas/nmap/</guid>
+      <description>¿Qué es Nmap? Nmap es un software de código abierto que se utiliza para escanear una red y sus puertos con el objetivo de obtener información importante sobre la misma para controlar y gestionar su seguridad. Es una aplicación que se utiliza normalmente para realizar auditorías de seguridad y auditorias en redes.
+Algunas de las cosas que se pueden hacer con Nmap.  Identificar dispositivos dentro de una red
+  Identificar versiones y servicios</description>
+    </item>
+    
+  </channel>
+</rss>

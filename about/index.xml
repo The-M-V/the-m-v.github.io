@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Abouts on TheMV</title>
+    <link>https://the-m-v.github.io/about/</link>
+    <description>Recent content in Abouts on TheMV</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://the-m-v.github.io/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://the-m-v.github.io/about/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://the-m-v.github.io/about/about/</guid>
+      <description>Hola, bienvenido a mi página web, un gusto que estés aquí. Mi nombre es TheMV, me gusta el Hacking y la programación hace bastante tiempo, pero empecé a aprender hace poco. Por aquí voy a estar subiendo todo lo que voy aprendiendo, resoluciones de máquinas y manuales sobre herramientas</description>
+    </item>
+    
+  </channel>
+</rss>
